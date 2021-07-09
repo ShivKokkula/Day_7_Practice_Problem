@@ -103,7 +103,17 @@ public class AddressBookMain {
     }
 
     private static void del() {
-        System.out.println("Delete operation");
+        System.out.println("------Delete a contact------");
+        System.out.println("Please enter the contact first name");
+        String name=input.next();
+        int index = getIndex(name);
+        if(-1 == index) {
+            System.out.println("Contact does not exist");
+        }else {
+            contacts[index]=contacts[current_contacts_counts-1];
+            current_contacts_counts--;
+            System.out.println("successfully deleted");
+        }
     }
 
     public static void add() {
@@ -128,7 +138,7 @@ public class AddressBookMain {
         contacts[current_contacts_counts] = new Contacts(firstName, lastName, address, city, state, zipCode,
                 phoneNumber, email);
 
-        System.out.println(contacts.toString());
+        System.out.println(contacts[0].toString());
     }
 
     public static int getIndex(String firstName) {
